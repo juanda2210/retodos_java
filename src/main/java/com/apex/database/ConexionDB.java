@@ -9,7 +9,7 @@ public class ConexionDB {
             "jdbc:mysql://localhost:3306/reto_DB";
 
     private static final String USER = "root";
-    private static final String PASSWORD = "1234";
+    private static final String PASSWORD = "221004190819";
 
     public static Connection getConnection() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
