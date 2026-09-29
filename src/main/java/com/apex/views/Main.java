@@ -34,8 +34,10 @@ public class Main {
                 case INSCRIBIR_PARTICIPANTE -> {
                     // Lógica para inscribir participante
                     try {
+                        List<Participante> participantes = dao.listarTodos();
+
                         String nombre = ScannerUtils.capturarTexto("nombre");
-                        String correo = ScannerUtils.capturarTexto("correo");
+                        String correo = ScannerUtils.capturarCorreo("correo", participantes);
                         String empresa = ScannerUtils.capturarTexto("empresa");
 
                         Participante participante = new Participante(nombre, correo, empresa);
@@ -90,7 +92,9 @@ public class Main {
                     System.out.println("--Eliminar participante--");
                     System.out.println("-------------------------");
                     try {
-                        int id = ScannerUtils.capturarNumero("id");
+                        List<Participante> participantes = dao.listarTodos();
+
+                        int id = ScannerUtils.eliminarParticipante("id", participantes);
                         dao.eliminar(id);
                         System.out.println("Participante eliminado satisfactoriamente");
                     } catch (SQLException e) {

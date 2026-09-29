@@ -177,4 +177,17 @@ public class ParticipanteDAO {
 
         return 0;
     }
+
+    public static String verificarCorreo(List<Participante> participantes, String correoPorVerificar) {
+        return participantes.stream()
+                .map(participante -> participante.getCorreo())
+                .filter(correo -> correo.equalsIgnoreCase(correoPorVerificar))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public static boolean verificarId(List<Participante> participantes, int idPorVerificar) {
+        return participantes.stream()
+                .anyMatch(participante -> participante.getId_participante() == idPorVerificar);
+    }
 }
